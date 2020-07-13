@@ -1,0 +1,42 @@
+<!--pages/self/info/info.wxml-->
+<scroll-view>
+  <div class="weui-cells">
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <p>状态</p>
+        </div>
+        <div class="weui-cell__ft">{{userInfo.state}}</div>
+    </div>
+    <view class="info-gap"></view>
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <p>部门</p>
+        </div>
+        <div class="weui-cell__ft">
+          <picker bindchange="bindOrganChange" value="{{index}}" range="{{userInfo.organs}}" range-key="name">
+              <input class="weui-input" placeholder="请选择部门" disabled="disabled" value="{{organ}}" />
+          </picker>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <p>职位</p>
+        </div>
+        <div class="weui-cell__ft">
+          <picker bindchange="bindPositionChange" value="{{index}}" range="{{userInfo.roles}}" range-key="name">
+              <input class="weui-input" placeholder="请选择职位" disabled="disabled" value="{{role}}" />
+          </picker>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <p>姓名</p>
+        </div>
+        <div class="weui-cell__ft">
+          <input class="weui-input" type="text" placeholder="请输入姓名" value="{{userInfo.name}}" bindinput="inputName" /></div>
+    </div>
+    <div wx:if="{{userInfo.state != '审批通过'}}" class="weui-form-preview__ft">
+        <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" catchtap="saveInfo">提交审核</a>
+    </div>
+  </div>
+</scroll-view>

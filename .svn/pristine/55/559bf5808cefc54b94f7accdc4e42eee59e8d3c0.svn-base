@@ -1,0 +1,71 @@
+{
+  "pages": [
+    "pages/calendar/calendar",
+    "pages/self/self",
+    "pages/self/info/info",
+    "pages/dcdb/dcdb",
+    "pages/loan/loan",
+    "pages/loan/detail/detail",
+    "pages/loan/finish/finish",
+    "pages/dcdb/dcdbList/dcdbList",
+    "pages/works/works",
+    "pages/works/check/check",
+    "pages/finish/finish",
+    "pages/sw/instructionList/list",
+    "pages/sw/instructionList/info/info",
+    "pages/sw/instructionList/editor/editor",
+    "pages/sw/instructionList/search/swSearch",
+    "pages/sw/seeList/list",
+    "pages/sw/seeList/info/info",
+    "pages/sw/seeList/editor/editor",
+    "pages/sw/seeList/search/swSearch",
+    "pages/works/check/select-search-type/select-search-type",
+    "pages/works/overtime/overtime",
+    "pages/works/overtime/detail/detail",
+    "pages/works/overtime/add/add",
+    "pages/works/leave/leave",
+    "pages/works/leave/detail/detail",
+    "pages/works/leave/add/add",
+    "pages/works/travel-record-list/travel-record-list",
+    "pages/works/travel-record-list/travel-record-detail/travel-record-detail",
+    "pages/works/travel-record-list/travel-application/travel-application",
+    "pages/works/writeoff/writeoff",
+    "pages/works/writeoff/detail/detail",
+    "pages/works/writeoff/add/add",
+    "pages/works/onduty-record-list/onduty-record-list",
+    "pages/xizi/xizi",
+    "pages/loan"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#5cb85c",
+    "navigationBarTitleText": "建控OA",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#1afa29",
+    "list": [
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text": "考勤",
+        "iconPath": "images/fingerprint.png",
+        "selectedIconPath": "images/fingerprint-fill.png"
+      },
+      {
+        "pagePath": "pages/works/works",
+        "text": "工作",
+        "iconPath": "images/works.png",
+        "selectedIconPath": "images/works-fill.png"
+      },
+      {
+        "pagePath": "pages/self/self",
+        "text": "我",
+        "iconPath": "images/self.png",
+        "selectedIconPath": "images/self-fill.png"
+      }
+    ]
+  }
+}

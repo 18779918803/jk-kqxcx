@@ -1,0 +1,184 @@
+const app = getApp();
+
+Page({
+  mixins: [require('../../../dist/mixin/themeChanged')],
+  data: {
+    total: '-',
+    userInfo: {},
+    //用户职位信息
+    userPosition: {},
+    currentWork : {},
+    search: {
+      year: '',
+      month: '',
+    },
+    monthList: [1,2,3,4,5,6,7,8,9,10,11,12],
+    // tysss:[{name:"加班",id:1},{name:"请假",id:2}],
+    positionList:[],
+    //记录状态：-1为已拒绝，0为原始状态，1为已通过
+    overtimeRecordList: [],
+  },
+  // 年份搜索改变
+  bindYearChange: function(e) {
+    var year = 'search.year';
+    this.setData({
+      [year]: e.detail.value,
+    });
+    this.getOvertimeRecordList();
+  },
+  // 月份搜索改变
+  bindMonthChange: function(e) {
+    var month = 'search.month';
+    this.setData({
+      [month]: this.data.monthList[e.detail.value],
+    });
+    this.getOvertimeRecordList();
+  },
+  
+  // 申请详情页面
+  overtimeRecordDetail: function(obj) {
+    var index = obj.currentTarget.dataset.message;
+    app.globalData.currentRecord = this.data.overtimeRecordList[index];
+    wx.navigateTo({
+      url: '/pages/works/overtime-record-list/overtime-record-detail/overtime-record-detail',
+    })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    //
+    var headerHeight = 65;
+    var res = wx.getSystemInfoSync();
+    var scrollViewHeight = res.windowHeight - headerHeight;
+    this.setData({
+      date: year + "-" + month,
+      year: year,
+      month: month,
+      start: "2020-06",
+      end: year + "-" + month,
+      scrollViewHeight: scrollViewHeight,
+      scrollViewTop: headerHeight
+    });
+    
+    this.setData({
+      userInfo: app.globalData.userInfo,
+      userPosition: app.globalData.userPosition,
+    });
+    //页面初始化的时候加载日期数据
+    this.loadDateData();
+  },
+  //页面初始化的时候加载日期数据
+  loadDateData: function() {
+    var date = new Date();
+    var year = 'search.year';
+    var month = 'search.month';
+    this.setData({
+      [year]: date.getFullYear(),
+      [month]: date.getMonth() + 1,
+    })
+  },
+  
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.getOvertimeRecordList();
+    this.getPositionList();
+  },
+  //获取所有的加班记录
+  getOvertimeRecordList: function(){
+    var that = this;
+    var m =that.data.search.month;
+    if (m < 10) {
+      m = '0'+m;
+    }
+    //请求当月的加班记录
+    wx.request({
+      url: app.globalData.url.overtimeList, //请求路径
+      method: 'GET',
+      data: {
+        date: that.data.search.year+'-'+m+'-'+'01',
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        if (res.statusCode == 200) {
+          if (res.data.code == 200) {
+            that.setData({
+              overtimeRecordList: res.data.data,
+            })
+          }
+        }
+      }
+    });
+  },
+  getPositionList:function(){
+    var that = this;
+    //请求所有的职位信息
+    wx.request({
+      url: app.globalData.url.positionList, //请求路径
+      method: 'GET',
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        if (res.statusCode == 200) {
+          if (res.data.code == 200) {
+            that.setData({
+              positionList: res.data.data,
+            })
+          }
+        }
+      }
+    });
+  },
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})

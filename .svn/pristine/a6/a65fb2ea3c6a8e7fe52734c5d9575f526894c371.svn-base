@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/calendar/calendar",
+    "pages/self/self",
+    "pages/self/info/info",
+    "pages/dcdb/dcdb",
+    "pages/dcdb/dcdbList/dcdbList",
+    "pages/works/works",
+    "pages/works/check/check",
+    "pages/finish/finish",
+    "pages/works/check/select-search-type/select-search-type",
+    "pages/works/overtime-record-list/overtime-record-list",
+    "pages/works/overtime-record-list/overtime-record-detail/overtime-record-detail",
+    "pages/works/overtime-record-list/overtime-application/overtime-application",
+    "pages/works/leave-record-list/leave-record-list",
+    "pages/works/leave-record-list/leave-record-detail/leave-record-detail",
+    "pages/works/leave-record-list/leave-application/leave-application",
+    "pages/works/travel-record-list/travel-record-list",
+    "pages/works/travel-record-list/travel-record-detail/travel-record-detail",
+    "pages/works/travel-record-list/travel-application/travel-application",
+    "pages/works/writeoff-record-list/writeoff-record-list",
+    "pages/works/writeoff-record-list/writeoff-record-detail/writeoff-record-detail",
+    "pages/works/writeoff-record-list/writeoff-application/writeoff-application",
+    "pages/works/onduty-record-list/onduty-record-list",
+    "pages/xizi/xizi"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#5cb85c",
+    "navigationBarTitleText": "建控OA",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#1afa29",
+    "list": [
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text": "考勤",
+        "iconPath": "images/fingerprint.png",
+        "selectedIconPath": "images/fingerprint-fill.png"
+      },
+      {
+        "pagePath": "pages/works/works",
+        "text": "工作",
+        "iconPath": "images/works.png",
+        "selectedIconPath": "images/works-fill.png"
+      },
+      {
+        "pagePath": "pages/self/self",
+        "text": "我",
+        "iconPath": "images/self.png",
+        "selectedIconPath": "images/self-fill.png"
+      }
+    ]
+  }
+}

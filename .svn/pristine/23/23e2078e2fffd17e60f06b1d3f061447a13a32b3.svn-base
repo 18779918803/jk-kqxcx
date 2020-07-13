@@ -1,0 +1,62 @@
+<view class="page" data-weui-theme="收文审批">
+
+	<view class="weui-tab">
+			<view class="search">
+					<view class="button-sp-area cell">
+							<view class="weui-flex">
+									<view class="weui-flex__item" >
+											<picker mode="date" value="" fields="day" bindchange="bindDateChange">
+													<view class="search-date">
+														<image  src="/images/search_date.png"></image>
+														<text>{{search.date}}</text>
+													</view>	
+											</picker>
+									</view>
+									<view class="middle"></view>
+									<view class="weui-flex__item">
+												<view class="search-type" bindtap="toSelectSearchType">
+													<image  src="/images/search_type.png"></image>
+													<text>筛选</text>
+												</view>
+									</view>
+							</view>
+					</view>
+			</view>
+	</view>
+	<view class="page__bd chekc-record-list">
+
+    <!-- 第一个审批 -->
+		<view class="weui-form-preview" wx:for="{{instructionList}}" wx:key="index" wx:for-item="item" bindtap="instructionInfo" data-id='{{item.id}}'>
+			<view class="weui-form-preview__hd">
+			</view>
+			<view class="weui-form-preview__bd">
+				<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label" >标题：</label>
+					<text class="weui-form-preview__value">{{item.title}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label" >来文字号：</label>
+					<text class="weui-form-preview__value">{{item.receivedSn}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label" >来文单位：</label>
+					<text class="weui-form-preview__value">{{item.receivedOrg}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label" >收文日期：</label>
+					<text class="weui-form-preview__value">{{item.receivedDate}}</text>
+				</view>
+					<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label" >重要程度：</label>
+					<text class="weui-form-preview__value">{{item.importance}}</text>
+				</view>
+			</view>
+			<view style="margin-bottom:10rpx;"></view>
+		<!-- <view class="weui-form-preview__ft">
+				<a class="weui-form-preview__btn weui-form-preview__btn_primary reject" bindtap="reject" data-id="{{item.id}}" data-pid="{{item.pid}}">拒绝</a>
+				<a class="weui-form-preview__btn weui-form-preview__btn_default pass" bindtap="pass" data-id="{{item.id}}" data-pid="{{item.pid}}">通过</a>
+		</view> -->
+		<view style="margin-bottom:10rpx;"></view>
+		</view>
+	</view>
+</view>

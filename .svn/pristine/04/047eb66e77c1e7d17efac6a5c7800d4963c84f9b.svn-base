@@ -1,0 +1,105 @@
+<!-- <view class="page" data-weui-theme="{{theme}}">
+    
+    <view class="weui-tab">
+        <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">日期</label>
+                    </view>
+						<view class="weui-cell__bd">
+                        <picker mode="date" value="{{date}}" start="2020-01-01" end="2100-01-01" bindchange="bindDateChange">
+                            <view class="weui-select">{{date}}</view>
+                        </picker>
+						</view>
+					</view>
+    </view>
+
+
+    <view class="weui-cells weui-cells_after-title off-record-list">
+        <view class="weui-cell weui-cell_example" wx:for="{{writeoffRecordList}}" wx:key="index" bindtap="writeoffRecordDetail" data-message="{{index}}">
+            <view class="image">
+                <image class="" src="/images/writeoff_fill.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="record-content">
+                <view>{{userInfo.name}}的核销申请<text class="date-time">{{item.insertTime}}</text></view>
+                <view class="organ">所在部门：{{item.organ}}</view>
+                <view class="date">核销日期：{{item.date}}</view>
+                <view class="date">核销类型：{{item.typeName}}</view>
+                <view class="reason">核销原因：{{item.reason}}</view>
+
+                <view class="state original" wx:if="{{item.isEnd ==2}}"><text>当前状态：</text>审核中……</view>
+                <view class="state pass" wx:if="{{item.isEnd == 1}}">
+                    <block wx:if="{{item.isPass == 1}}">
+                          <text>当前状态：</text>审批通过 </block>
+                    <block wx:else><text>当前状态：</text>审批拒绝</block>
+                </view>
+            </view>
+        </view>
+    </view>
+            
+
+
+    <view class="weui-tab" bindtap="writeoffApplication">
+        <view class="weui-tabbar">
+            <view class="button-sp-area" style="padding-top:15rpx;padding-bottom:15rpx;">
+			    <a class="weui-btn weui-btn_primary">新增核销申请</a>
+            </view>
+        </view>
+    </view>
+
+</view> -->
+
+
+<view class="weui-form-preview" style="background-color:#eeffff;">
+  <picker class="his-row weui-form-preview__bd" mode="date" fields="month" value="{{date}}" start="{{start}}" end="{{end}}" bindchange="bindDateChange">
+    <view class="weui-form-preview__item" style="position:relative;">
+      <label class="weui-form-preview__label">核销总计</label>
+      <text class="weui-form-preview__value">{{year}}年{{month}}月</text>
+      <text class="weui-media-box__desc">
+        <text class="float-left">待核算</text>
+        <text class="clear"></text>
+      </text>
+      <image src="../../../../../../../images/down.png" style="position:absolute;bottom:0;right:0;width:40rpx;height:40rpx;"></image>
+    </view>
+  </picker>
+</view>
+<scroll-view scroll-y="true" class="page" style="top:{{scrollViewTop}}px;height:{{scrollViewHeight}}px">
+  <view class="page__bd">
+    <view wx:for="{{record}}" wx:key="key" class="weui-form-preview" data-id="{{item.id}}" data-pid="{{item.pid}}" bindtap="detail">
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">{{item.typeName}}</view>
+          <view class="weui-form-preview__value_in-hd">{{item.date}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">审核状态</view>
+          <view class="weui-form-preview__value">{{item.statusName}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">申请时间</view>
+          <view class="weui-form-preview__value">{{item.insertTime}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">核销原因</view>
+          <view class="weui-form-preview__value">{{item.reason}}</view>
+        </view>
+      </view>
+      <!-- <view class="weui-form-preview__bd oa-preview">
+        <view class="weui-cells__title">审批记录</view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">我发起申请</view>
+          <view class="weui-form-preview__value">{{item.insertTime}}</view>
+        </view>
+        <view wx:for="{{checkList}}" wx:key="index" class="weui-form-preview__item">
+          <view class="weui-form-preview__label">{{item.pname}}</view>
+          <view class="weui-form-preview__value">{{item.name}}</view>
+        </view>
+      </view> -->
+      <view class="br"></view>
+    </view>
+  </view>
+  <view wx:if="{{record.length==0}}" class="weui-loadmore" style="height:300rpx;margin-top:0;padding-top:60rpx;">
+    <text class="weui-loadmore__tips loadmore" style="color:#ccc;">暂无数据</text>
+  </view>
+</scroll-view>

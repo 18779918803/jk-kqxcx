@@ -1,0 +1,69 @@
+<view class="page" data-weui-theme="{{theme}}">
+    
+    <view class="weui-tab">
+        <!-- <view class="search">
+            <view class="button-sp-area cell">
+                <view class="weui-flex">
+                    <view class="weui-flex__item">
+                        <picker mode="date" value="{{search.year}}" fields="year" bindchange="bindYearChange">
+                            <view class="placeholder">{{search.year}}年</view>
+                        </picker>
+                    </view>
+                    <view class="weui-flex__item">
+                        <picker mode="selector" value="{{search.month - 1}}" range="{{monthList}}" bindchange="bindMonthChange">
+                            <view class="placeholder">{{search.month}}月</view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+        </view> -->
+        <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">日期</label>
+                    </view>
+						<view class="weui-cell__bd">
+                        <picker mode="date" value="{{date}}" start="2020-01-01" end="2100-01-01" bindchange="bindDateChange">
+                            <view class="weui-select">{{date}}</view>
+                        </picker>
+						</view>
+					</view>
+        </view>
+    
+
+
+    <view class="weui-cells weui-cells_after-title leave-record-list">
+        <view class="weui-cell weui-cell_example" wx:for="{{leaveRecordList}}" wx:key="index" bindtap="leaveRecordDetail" data-message="{{index}}">
+            <view class="image">
+                <image class="" src="/images/leave_fill.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="record-content">
+                <view>{{userInfo.name}}的请假申请<text class="date-time">{{item.insertTime}}</text></view>
+                <view class="organ">所在部门：{{item.organ}}</view>
+                <view class="date">请假日期：{{item.startDate}}</view>
+                <view class="date">请假类型：{{item.typeName}}</view>
+                <view class="date">请假天数：{{item.day}}</view>
+                <view class="reason">请假原因：{{item.reason}}</view>
+                <view class="state original" wx:if="{{item.state == 0 || item.state == userPosition.grade}}"><text>当前状态：</text>审核中……</view>
+                <view class="state pass" wx:elif="{{item.state > 0}}">
+                    <block wx:if="{{item.state == item.topState}}"><text>当前状态：</text>审批结束 </block>
+                    <block wx:else><text>当前状态：</text>{{positionList[(item.state)].name}}审批通过</block>
+                </view>
+                <view class="state reject" wx:else="{{item.state < 0}}">
+                    <block wx:if="{{-item.state == item.topState}}"><text>当前状态：</text>审批结束</block>
+                    <block wx:else><text>当前状态：</text>{{positionList[(-item.state)].name}}审批拒绝</block> 
+                </view>
+            </view>
+        </view>
+    </view>
+            
+
+
+    <view class="weui-tab" bindtap="leaveApplication">
+        <view class="weui-tabbar">
+            <view class="button-sp-area" style="padding-top:15rpx;padding-bottom:15rpx;">
+			    <a class="weui-btn weui-btn_primary">新增请假申请</a>
+            </view>
+        </view>
+    </view>
+
+</view>

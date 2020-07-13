@@ -1,0 +1,77 @@
+<view class="weui-form">
+		<view class="weui-form__text-area">
+			<h2 class="weui-form__title">请假申请</h2>
+		</view>
+		<view class="weui-form__control-area">
+			<view class="weui-cells__group weui-cells__group_form">
+				<view class="weui-cells weui-cells_form">
+          <view class="weui-cell weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">请假类型</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="selector" range="{{types}}" range-key="name" value="" bindchange="bindTypeChange">
+                <view class="weui-select">{{type}}</view>
+              </picker>
+						</view>
+					</view>
+					<view class="weui-cell weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">开始日期</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="date" value="{{date}}" start="2020-01-01" end="2100-01-01" bindchange="bindStartDateChange">
+                <view class="weui-select">{{startDate}}</view>
+              </picker>
+						</view>
+					</view>
+          <view class="weui-cell weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">结束日期</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="date" value="{{date}}" start="2020-01-01" end="2100-01-01" bindchange="bindEndDateChange">
+                <view class="weui-select">{{endDate}}</view>
+              </picker>
+						</view>
+					</view>
+          <view class="weui-cell weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+              <label class="weui-label">请假天数</label>
+            </view>
+						<view class="weui-cell__bd">
+							<picker mode="selector" value="{{index}}" range="{{days}}" range-key="day" bindchange="bindDayChange">
+                <view class="weui-select">{{day}}</view>
+              </picker>
+						</view>
+					</view>
+          <view wx:if="{{day==0.5}}" class="weui-cell weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+              <label class="weui-label">请假时间</label>
+            </view>
+						<view class="weui-cell__bd">
+							<picker mode="selector" value="{{index}}" range="{{times}}" range-key="time" bindchange="bindTimeChange">
+                <view class="weui-select">{{timeText}}</view>
+              </picker>
+						</view>
+					</view>
+          <!-- 事由描述 -->
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <input id="js_input" class="weui-input" placeholder="请输入请假原因" bindinput="bindReasonChange" />
+            </view>
+          </view>
+				</view>
+			</view>
+		</view>
+    <view class="weui-form__opr-area">
+      <a class="weui-btn weui-btn_primary" href="javascript:" bindtap="submit">提交申请</a>
+    </view>
+    <view class="weui-form__extra-area">
+      <view class="weui-footer">
+        <p class="weui-footer__links">
+          <a href="javascript:" class="weui-footer__link" bindtap="his">申请记录</a>
+        </p>
+      </view>
+    </view>
+</view>

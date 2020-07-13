@@ -1,0 +1,78 @@
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="page__bd">
+
+		<view class="weui-panel weui-panel_access">
+			<view class="weui-panel__hd">
+        {{userInfo.name}}的请假申请
+        <view class="state original" wx:if="{{currentRecord.isEnd == false }}"><text>当前状态：</text>审核中……</view>
+        <view class="state pass" wx:if="{{currentRecord.isEnd == true && currentRecord.isPass == true}}">
+                <text>当前状态：</text>审批完成
+        </view>
+        <view class="state reject" wx:if="{{currentRecord.isEnd == true && currentRecord.isPass == false}}">
+                <text>当前状态：</text>审批拒绝
+        </view> 
+      </view>
+      <view class="check-state-icon">
+        <image wx:if="{{currentRecord.isEnd == false}}" src="/images/checking.png"></image>
+        <image wx:elif="{{currentRecord.isEnd == true}}" src="/images/check_pass.png"></image>
+        <!-- <image wx:else="{{currentRecord.state < 0}}" src="/images/check_reject.png"></image> -->
+      </view>
+			<view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text">
+            <view class="date">申请时间：{{currentRecord.insertTime}}</view>
+            <view class="organ">所在部门：{{currentRecord.organ}}</view>
+            <view class="date">请假日期：{{currentRecord.startDate}}</view>
+            <view class="date">请假类型：{{currentRecord.typeName}}</view>
+            <view class="date">请假天数：{{currentRecord.day}}</view>
+            <view class="reason">请假原因：{{currentRecord.reason}}</view>
+        </view>
+			</view>
+
+      
+
+      <view class="weui-cells weui-cells_after-title check-process" style="margin-top:60rpx;">
+          <view class="weui-cell check-process">
+              <image src="/images/leave_fill.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <view class="weui-cell__bd check-person">我 发起申请</view>
+              <view class="weui-cell__ft check-date-time">{{currentRecord.insertTime}}</view> 
+          </view>
+          
+          <view class="weui-cell check-process" wx:for="{{currentRecord.his}}" wx:key="index">
+              <image src="/images/leave_fill.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <block wx:if="{{item.comment == '【同意】'}}">
+                <view  class="weui-cell__bd check-person">
+                  <view>{{item.assignee}}</view>
+                  <view class="original">{{item.name}}</view>
+                </view>
+                <view class="weui-cell__ft check-date-time">
+                  <view>{{item.endTime}}</view>
+                  <view class="pass">审批通过</view>
+                </view>
+              </block>
+              <block wx:else>
+                <view  class="weui-cell__bd check-person ">
+                  <view>{{item.assignee}}</view>
+                  <view class="original">{{item.name}}</view>
+                </view>
+                <view class="weui-cell__ft check-date-time">
+                  <view>{{item.endTime}}</view>
+                  <view class="reject">审批拒绝</view>
+                </view> 
+              </block>
+          </view>
+
+          <view class="weui-cell check-process" wx:if="{{ currentRecord.isEnd == true}}">
+              <image src="/images/leave_fill.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+              <view class="weui-cell__bd check-person">
+              </view> 
+              <view class="weui-cell__ft check-date-time">
+                <view class="pass" wx:if="{{currentRecord.isPass == true }}">审批流程结束</view>
+                <view class="reject" wx:if="{{currentRecord.isPass == false}}">审批流程结束</view> 
+              </view>
+          </view>
+
+      </view>
+		</view>
+
+	</view>
+</view>

@@ -1,0 +1,62 @@
+<!-- <scroll-view scroll-y="true">
+
+
+  
+		<view class="weui-tab" bindtap="submitApp">
+        <view class="weui-tabbar">
+            <view class="button-sp-area" style="padding-top:15rpx;padding-bottom:15rpx;">
+			        <a class="weui-btn weui-btn_primary">提交申请</a>
+            </view>
+        </view>
+    </view>
+
+
+</scroll-view> -->
+
+
+
+<!--pages/self/self.wxml-->
+<scroll-view scroll-y="true" style="height:{{scrollViewHeight}}px">
+  <view class="weui-form__text-area" style="padding-top:92rpx;padding-bottom:60rpx;">
+    <h2 class="weui-form__title">加班申请</h2>
+  </view>
+  <view>
+    <view>
+        <div class="weui-cells" style="width:100%;margin-top:80rpx;margin-left:32rpx;margin-right:32rpx;">
+            <a class="weui-cell" href="javascript:" catchtap="selfInfo">
+                <div class="weui-cell__bd">
+                    <p>加班日期</p>
+                </div>
+                <div class="weui-cell__ft">
+                  <picker mode="date" value="{{date}}" start="{{date}}" end="2100-01-01" bindchange="bindDateChange">
+                    {{date}}
+                  </picker>
+                </div>
+            </a>
+            <!-- <a class="weui-cell" href="javascript:" catchtap="selfInfo">
+                <div class="weui-cell__bd">
+                    <p>加班事由</p>
+                </div>
+            </a> -->
+            <a class="weui-cell" href="javascript:" catchtap="selfInfo">
+                <div class="weui-cell__bd">
+                  <textarea class="weui-textarea" placeholder="请输入加班事由" rows="3" bindinput="bindReasonChange"></textarea>
+                  <view class="weui-textarea-counter"><text>{{reasonLength}}</text>/140</view>
+                </div>
+            </a>
+        </div>
+    </view>
+    <view class="loginButton">
+      <a class="weui-btn weui-btn_primary" bindtap="submitApp">提交申请</a>
+    </view>
+  </view>
+  <view class="oa-extra-area">
+    <div class="weui-form__extra-area">
+      <div class="weui-footer">
+        <p class="weui-footer__links">
+          <a href="javascript:" class="weui-footer__link" bindtap="overtimeApplication">申请记录</a>
+        </p>
+      </div>
+    </div>
+  </view>
+</scroll-view>

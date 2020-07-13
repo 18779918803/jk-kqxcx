@@ -1,0 +1,63 @@
+<view class="page" data-weui-theme="{{theme}}">
+
+  <!-- <view class="condition">
+    <view class="head">
+      <view class="point condition-state"></view>
+      <view class="search-condition">状态</view>
+    </view>
+    <view class="weui-flex" wx:for="{{states}}" wx:key="index" wx:if="{{index % 2 == 0}}">
+			<view class="weui-flex__item" bindtap="searchState" data-message="{{states[index].id}}">
+        <view class="placeholder {{search.state == states[index].id ? 'select-state' : ''}}" 
+          wx:if="{{index < states.length}}">{{states[index].name}}</view>
+      </view>
+			<view class="weui-flex__item" bindtap="searchState" data-message="{{states[index+1].id}}">
+        <view class="placeholder {{search.state == states[index+1].id ? 'select-state' : ''}}" 
+          wx:if="{{index+1 < states.length}}">{{states[index+1].name}}</view>
+      </view>
+		</view>
+  </view> -->
+
+  <view class="condition">
+    <view class="head">
+      <view class="point condition-type"></view>
+      <view class="search-condition">类型</view>
+    </view>
+    <view class="weui-flex" wx:for="{{types}}" wx:key="index" wx:if="{{index % 2 == 0}}">
+			<view class="weui-flex__item" bindtap="searchType" data-message="{{types[index].id}}">
+        <view class="placeholder {{search.typePId == types[index].id ? 'select-type' : ''}}" 
+          wx:if="{{index < types.length}}">{{types[index].name}}</view>
+      </view>
+			<view class="weui-flex__item" bindtap="searchType" data-message="{{types[index+1].id}}">
+        <view class="placeholder {{search.typePId == types[index+1].id ? 'select-type' : ''}}" 
+          wx:if="{{index+1 < types.length}}">{{types[index+1].name}}</view>
+      </view>
+		</view>
+  </view>
+
+  <!-- <view class="condition">
+    <view class="head">
+      <view class="point condition-organ"></view>
+      <view class="search-condition">部门</view>
+    </view>
+    <view class="weui-flex" wx:for="{{organs}}" wx:key="index" wx:if="{{index % 2 == 0}}">
+			<view class="weui-flex__item" bindtap="searchOrgan" data-message="{{organs[index].id}}">
+        <view class="placeholder {{search.organId == organs[index].id ? 'select-organ' : ''}}"
+          wx:if="{{index < organs.length}}">{{organs[index].name}}</view>
+      </view>
+			<view class="weui-flex__item" bindtap="searchOrgan" data-message="{{organs[index+1].id}}">
+        <view class="placeholder {{search.organId == organs[index+1].id ? 'select-organ' : ''}}" 
+          wx:if="{{index+1 < organs.length}}">{{organs[index+1].name}}</view>
+      </view>
+		</view>
+  </view> -->
+
+  <view class="weui-tab" bindtap="toNewApplication" bindtap="toSearch">
+      <view class="weui-tabbar">
+          <view class="button-sp-area" style="width:100%">
+            <a class="weui-btn">确定</a>
+          </view>
+      </view>
+  </view>
+
+
+</view>

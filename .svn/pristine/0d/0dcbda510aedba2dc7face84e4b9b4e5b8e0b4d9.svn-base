@@ -1,0 +1,54 @@
+<view class="weui-form">
+		<view class="weui-form__text-area">
+      <image class="image" src="/images/writeoff_fill.png"/>
+			<h2 class="weui-form__title">核销申请</h2>
+		</view>
+		<view class="weui-form__control-area">
+			<view class="weui-cells__group weui-cells__group_form">
+				<view class="weui-cells weui-cells_form">
+          <!-- 日期选择框 -->
+					<view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">核销日期</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="date" value="{{date}}" start="2020-01-01" end="2100-01-01" bindchange="bindDateChange">
+                <view class="weui-select">{{date}}</view>
+              </picker>
+						</view>
+					</view>
+          <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">核销类型</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="selector" range="{{writeoffTypes}}" range-key="name" value="" bindchange="bindTypeChange">
+                <view class="weui-select">{{type}}</view>
+              </picker>
+						</view>
+					</view>
+          <!-- 事由描述 -->
+          <view class="weui-cells weui-cells_form">
+            <view class="weui-cell ">
+              <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请填写您的核销原因" rows="3" bindinput="bindReasonChange"></textarea>
+                <view class="weui-textarea-counter"><text>{{reasonLength}}</text>/140</view>
+              </view>
+            </view>
+          </view>
+
+				</view>
+			</view>
+		</view>
+
+    <!-- 提交申请按钮 -->
+		<view class="weui-tab" bindtap="submitApp">
+        <view class="weui-tabbar">
+            <view class="button-sp-area" style="padding-top:15rpx;padding-bottom:15rpx;">
+			        <a class="weui-btn weui-btn_primary">提交申请</a>
+            </view>
+        </view>
+    </view>
+
+
+</view>

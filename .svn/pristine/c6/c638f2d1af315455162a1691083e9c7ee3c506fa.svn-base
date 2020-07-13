@@ -1,0 +1,20 @@
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="page__bd">
+
+		<view class="weui-panel weui-panel_access">
+			<view class="weui-panel__hd">
+        {{info.title}}
+      </view>
+			<view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text">
+            <view class="date">来文单位：{{info.receivedOrg}}</view>
+            <!-- <web-view src="{{info.url}}"></web-view> -->
+        </view>
+			</view>
+
+      
+		</view>
+
+	</view>
+        <web-view src="http://localhost:16006/kq/file/file/20200630/9223ef2d1a0d4a1f819caa4822e68fa3.pdf"></web-view>
+</view>

@@ -1,0 +1,7 @@
+
+.leave-record-list {
+  margin-top: 10rpx;
+  margin-bottom: 110rpx;
+}
+
+@import '/pages/works/works'

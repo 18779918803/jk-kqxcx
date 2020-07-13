@@ -1,0 +1,25 @@
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="page__bd">
+    <view class="weui-cells" wx:if="{{record}}" style="margin-top:0;font-size:.9em;">
+        <a class="weui-cell" wx:for="{{record.his}}" wx:key="index" href="javascript:">
+            <view class="weui-cell__bd">
+                <view>{{item.activityName}}{{item.comment}}</view>
+            </view>
+            <view class="weui-cell__ft">
+                <view>{{item.endTime}}</view>
+            </view>
+        </a>
+        <a class="weui-cell" href="javascript:">
+            <view class="weui-cell__bd">
+                <view>我发起申请</view>
+            </view>
+            <view class="weui-cell__ft">
+                <view>{{record.insertTime}}</view>
+            </view>
+        </a>
+        <a class="weui-btn weui-btn_primary" data-id="{{record.id}}" data-pid="{{record.typeId}}"
+             href="javascript:" bindtap="cancel">撤销申请</a>
+            
+    </view>
+	</view>
+</view>

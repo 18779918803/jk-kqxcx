@@ -1,0 +1,238 @@
+const app = getApp();
+
+var util = require("../../../utils/util")
+
+Page({
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    search: {
+      date: '',
+    },
+    //申请记录
+    records: [],
+  },
+  bindDateChange: function(e) {
+    this.setData({
+      ['search.date']: e.detail.value,
+    }),
+    app.globalData.search.date = e.detail.value,
+    this.getRecords(true);
+  },
+  toSelectSearchType: function() {
+    wx.navigateTo({
+      url: '/pages/works/check/select-search-type/select-search-type?typeId=2',
+    })
+  },
+  pass: function(obj) {
+    var id = obj.currentTarget.dataset.id;
+    var pid = obj.currentTarget.dataset.pid;
+    console.log(obj);
+    var that = this;
+    //通过请求，插入审核记录
+    wx.showLoading({
+      title: '操作中',
+      mask: true
+    });
+    wx.request({
+      url: app.globalData.url.apply.pass, //请求路径
+      method: 'POST',
+      data: {
+        id: id,
+        pid : pid
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        if (res.statusCode == 200) {
+          if (res.data.code == 200) {
+            app.showToast('申请已通过', 'success');
+            that.getRecords(false);
+          } else {
+            app.showToast('服务器繁忙，请稍后再试\n' + '(错误码:' + res.data.code + ')');
+          }
+        } else {
+          app.showToast('服务器繁忙，请稍后再试\n' + '(状态码:' + res.statusCode + ')');
+        }
+      },
+      fail(res) {
+        app.showToast('服务器繁忙，请稍后再试\n' + '(状态码:500)');
+      }
+    });
+  },
+  reject: function(obj) {
+    var id = obj.currentTarget.dataset.id;
+    var pid = obj.currentTarget.dataset.pid;
+    var that = this;
+    //拒绝请求，并插入审核记录
+    wx.showLoading({
+      title: '操作中',
+      mask: true
+    });
+    wx.request({
+      url: app.globalData.url.apply.reject, //请求路径
+      method: 'POST',
+      data: {
+        id: id,
+        pid : pid
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        if (res.statusCode == 200) {
+          if (res.data.code == 200) {
+            app.showToast('申请已拒绝');
+            that.getRecords(false);
+          } else {
+            app.showToast('服务器繁忙，请稍后再试\n' + '(错误码:' + res.data.code + ')');
+          }
+        } else {
+          app.showToast('服务器繁忙，请稍后再试\n' + '(状态码:' + res.statusCode + ')');
+        }
+      },
+      fail(res) {
+        app.showToast('服务器繁忙，请稍后再试\n' + '(状态码:500)');
+      }
+    });
+  },
+  // 一键通过所有申请
+  oneClickPass: function() {
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '您将一键通过当前页面的所有申请，您确定要这样操作吗？',
+      success (res) {
+        if (res.confirm) {
+          var records = that.data.records;
+          wx.showLoading({
+            title: '操作中',
+            mask: true
+          });
+          var ids = [];
+          var typeIds = [];
+          for(var record of records){
+            ids.push(record.id);
+            typeIds.push(record.pid);
+          }
+          //通过所有申请
+          wx.request({
+            url: app.globalData.url.apply.passBatch, //请求路径
+            method: 'POST',
+            data: {
+              ids: ids,
+              typeIds: typeIds
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded', // 默认值
+              'thirdSession': app.globalData.thirdSession
+            },
+            success (res) {
+              if (res.statusCode == 200) {
+                if (res.data.code == 200) {
+                  app.showToast('所有申请已通过');
+                  that.getRecords(false);
+                } else {
+                  app.showToast('服务器繁忙，请稍后再试\n' + '(错误码:' + res.data.code + ')');
+                }
+              } else {
+                app.showToast('服务器繁忙，请稍后再试\n' + '(状态码:' + res.statusCode + ')');
+              }
+            },
+            fail(res){
+              app.showToast('服务器繁忙，请稍后再试\n' + '(状态码:500)');
+            }
+          });    
+        }
+      }
+    })
+  },
+
+  onLoad: function (options) {
+    const page = this;
+    var date = app.globalData.search.date;
+    if(date == '' || date == null){
+      console.log('获取当前时间日期')
+      var date = util.formatDate(new Date());
+      app.globalData.search.date = date;
+    }
+    app.userLogin(function () {
+      page.setData({
+        hasUserInfo: app.globalData.hasUserInfo
+      });
+      if ( app.globalData.hasUserInfo ){
+        console.log('onLoad');
+        page.getRecords(true);
+      }
+    }, function(){
+      app.showToast('请先登录');
+    });
+  },
+
+  onShow: function () {
+    var date = app.globalData.search.date;
+    if(date == '' || date == null){
+      console.log('获取当前时间日期')
+      var date = util.formatDate(new Date());
+      app.globalData.search.date = date;
+    }
+    this.setData({
+      ['search.date']: date,
+    })
+    if (app.globalData.hasUserInfo) {
+      console.log('onShow');
+      this.getRecords(false);
+    }
+  },
+ 
+  getRecords: function(loading){
+    var search = app.globalData.search;
+    console.log("调用getRecors");
+    console.log(search)
+    var that = this;
+    //请求当月的加班记录
+    if( loading ){
+      wx.showLoading({
+        title: '获取记录中',
+        mask: true
+      });
+    }
+    wx.request({
+      url: app.globalData.url.apply.list, //请求路径
+      method: 'GET',
+      data: {
+        date: search.date,
+        // state: search.state,
+        typePId: search.typePId,
+        organId: search.organId,
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'thirdSession': app.globalData.thirdSession
+      },
+      success (res) {
+        if (res.statusCode == 200) {
+          console.log(res.data);
+          if (res.data.code == 200) {
+            that.setData({
+              records: res.data.data,
+            })
+            wx.hideLoading();
+          }else{
+            app.showToast('请求失败');
+            console.log(res);
+          }
+        } else {
+          app.showToast('服务器繁忙，请稍后再试\n' + '(状态码:' + res.statusCode + ')');
+        }
+      },
+      fail(res) {
+        app.showToast('服务器繁忙，请稍后再试\n' + '(状态码:500)');
+      }
+    });
+  },
+})

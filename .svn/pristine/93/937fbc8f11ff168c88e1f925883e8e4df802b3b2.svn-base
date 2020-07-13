@@ -1,0 +1,101 @@
+<view class="page" data-weui-theme="{{theme}}">
+	
+	<view class="weui-tab">
+			<view class="search">
+					<view class="button-sp-area cell">
+							<view class="weui-flex">
+									<view class="weui-flex__item" >
+											<picker mode="date" value="" fields="day" bindchange="bindDateChange">
+													<view class="search-date">
+														<image  src="/images/search_date.png"></image>
+														<text>{{search.date}}</text>
+													</view>	
+											</picker>
+									</view>
+									<view class="middle"></view>
+									<view class="weui-flex__item">
+												<view class="search-type" bindtap="toSelectSearchType">
+													<image  src="/images/search_type.png"></image>
+													<text>筛选</text>
+												</view>
+									</view>
+							</view>
+					</view>
+			</view>
+	</view>
+
+	<view class="page__bd chekc-record-list">
+    <!-- 第一个申请 -->
+		<view class="weui-form-preview" wx:for="{{records}}" wx:key="index" wx:for-item="item">
+			<view class="weui-form-preview__hd">
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label" >
+						<!-- <view class="application-name"><image src="/images/overtime_fill.png"/>加班申请</view> -->
+						<view class="application-name" wx:if="{{item.pid == 1}}"><image src="/images/overtime_fill.png"/>加班申请</view>
+						<view class="application-name" wx:elif="{{item.pid == 2}}"><image src="/images/leave_fill.png"/>请假申请</view>
+						<view class="application-name" wx:elif="{{item.pid == 3}}"><image src="/images/writeoff_fill.png"/>核销申请</view>
+						<view class="application-name" wx:elif="{{item.pid == 4}}"><image src="/images/travel_fill.png"/>出差申请</view>
+						<view class="application-date">{{item.applyTime}}</view>
+					</label>
+					<em class="weui-form-preview__value">
+						<view>{{item.applyUser}}</view>
+						<!-- <view class="application-state">{{item.state}}</view> -->
+						<view class="application-state">待{{item.taskName}}</view>
+					</em>
+				</view>
+			</view>
+			<view class="weui-form-preview__bd">
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">部门名称</label>
+					<text class="weui-form-preview__value">{{item.organ}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label" wx:if="{{item.pid == 1}}">加班时间</label>
+						<label class="weui-form-preview__label" wx:elif="{{item.pid == 2}}">请假时间</label>
+						<label class="weui-form-preview__label" wx:elif="{{item.pid == 3}}">核销时间</label>
+						<label class="weui-form-preview__label" wx:elif="{{item.pid == 4}}">出差时间</label>
+					<text class="weui-form-preview__value" wx:if="{{item.pid == 2}}">{{item.startDate}}</text>
+					<text class="weui-form-preview__value" wx:if="{{item.pid == 3}}">{{item.date}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label" wx:if="{{item.pid == 1}}">加班类型</label>
+						<label class="weui-form-preview__label" wx:elif="{{item.pid == 2}}">请假类型</label>
+						<label class="weui-form-preview__label" wx:elif="{{item.pid == 3}}">核销类型</label>
+						<label class="weui-form-preview__label" wx:elif="{{item.pid == 4}}">出差类型</label>
+					<text class="weui-form-preview__value">{{item.typeName}}</text>
+				</view>
+				<view class="weui-form-preview__item" wx:if="{{item.pid != 3}}">
+						<label class="weui-form-preview__label" wx:if="{{item.pid == 1}}">加班天数</label>
+						<label class="weui-form-preview__label" wx:elif="{{item.pid == 2}}">请假天数</label>
+						<label class="weui-form-preview__label" wx:elif="{{item.pid == 4}}">出差天数</label>
+					<text class="weui-form-preview__value">{{item.day}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label" wx:if="{{item.pid == 1}}">加班原因</label>
+						<label class="weui-form-preview__label" wx:elif="{{item.pid == 2}}">请假原因</label>
+						<label class="weui-form-preview__label" wx:elif="{{item.pid == 3}}">核销原因</label>
+						<label class="weui-form-preview__label" wx:elif="{{item.pid == 4}}">出差原因</label>
+					<text class="weui-form-preview__value">{{item.reason}}</text>
+				</view>
+			</view>
+			<view class="weui-form-preview__ft">
+				<a class="weui-form-preview__btn weui-form-preview__btn_primary reject" bindtap="reject" data-id="{{item.id}}" data-pid="{{item.pid}}">拒绝</a>
+				<a class="weui-form-preview__btn weui-form-preview__btn_default pass" bindtap="pass" data-id="{{item.id}}" data-pid="{{item.pid}}">通过</a>
+			</view>
+			<view style="margin-bottom:10rpx;"></view>
+		</view>
+	</view>
+
+
+	<!-- 提交申请按钮 -->
+		<view class="weui-tab" bindtap="oneClickPass">
+        <view class="weui-tabbar">
+            <view class="button-sp-area" style="width:100%">
+			        <a class="weui-btn weui-btn_primary">一键通过</a>
+            </view>
+        </view>
+    </view>
+
+
+
+</view>

@@ -1,0 +1,78 @@
+<!--pages/loan/finish/finish.wxml-->
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="weui-tab">
+			<view class="search">
+					<view class="button-sp-area cell">
+							<view class="weui-flex">
+									<view class="weui-flex__item" >
+											<picker mode="date" value="" fields="day" bindchange="bindDateChange">
+													<view class="search-date">
+														<image  src="/images/search_date.png"></image>
+														<text>{{search.date}}</text>
+													</view>	
+											</picker>
+									</view>
+									<view class="middle"></view>
+									<view class="weui-flex__item">
+												<view class="search-type" bindtap="toSelectSearchType">
+													<image  src="/images/search_type.png"></image>
+													<text>筛选</text>
+												</view>
+									</view>
+							</view>
+					</view>
+			</view>
+	</view>
+
+	<view class="page__bd chekc-record-list">
+    <!-- 第一个申请 -->
+		<view class="weui-form-preview" wx:for="{{records}}" wx:key="index" wx:for-item="item" bindtap="loanRecordDetail" data-message="{{index}}">
+			<view class="weui-form-preview__hd">
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label" >
+						<!-- <view class="application-name"><image src="/images/overtime_fill.png"/>加班申请</view> -->
+						<view class="application-name" ><image src="/images/overtime_fill.png"/>内部借款</view>
+          	<view class="application-date">{{item.applyTime}}</view>
+					</label>
+      	<em class="weui-form-preview__value">
+						<view>{{item.applyUser}}</view>
+						<!-- <view class="application-state">{{item.state}}</view> -->
+						<view class="application-state">已{{item.taskName}}</view>
+					</em>
+				</view>
+			</view>
+			<view class="weui-form-preview__bd">
+				<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label">编号</label>
+					<text class="weui-form-preview__value">{{item.number}}</text>
+				</view>
+
+				<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label">借款方名字</label>
+					<text class="weui-form-preview__value">{{item.debtorName}}</text>
+				</view>
+
+				<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label">贷款方名字</label>
+				  	<text class="weui-form-preview__value">{{item.leaderName}}</text>
+				</view>
+				
+				<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label" >借款用途</label>
+					<text class="weui-form-preview__value">{{item.remark}}</text>
+				</view>
+
+        	<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label" >借款金额</label>
+					<text class="weui-form-preview__value">{{item.amount}}</text>
+				</view>
+			</view>
+
+			<view style="margin-bottom:10rpx;"></view>
+		</view>
+	</view>
+
+
+
+
+</view>

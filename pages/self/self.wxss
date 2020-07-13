@@ -1,0 +1,58 @@
+/* pages/self/self.wxss */
+@import "../../utils/common.wxss";
+
+.infoButton:not([size='mini']){
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  line-height: 200rpx;
+  padding: 0;
+  font-size: 40rpx;
+  color: #747474;
+  border: 10rpx solid #eee;
+  background: #fff;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userinfo .default-avatar{
+  border: 10rpx solid #eee;
+  border-radius: 50%;
+  background: #fff;
+  width: 180rpx;
+  height: 180rpx;
+  box-shadow: 0px 0px 6px #bbb;
+}
+.userinfo .default-avatar image{
+  width: 130rpx;
+  height: 130rpx;
+  margin: 25rpx;
+}
+.userinfo-avatar {
+  width: 180rpx;
+  height: 180rpx;
+  margin-bottom: 20rpx;
+  border: 10rpx solid #eee;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0px 0px 6px #bbb;
+}
+.userinfo-nickname {
+  color: #aaa;
+}
+.loginButton{
+  margin-top: 180rpx;
+}
+.copyright {
+  font-size: 20rpx;
+  color:#747474;
+  text-align: center;
+  position: absolute;
+  bottom:100rpx;
+  width: 100%;
+}
+.copyright .company{
+  margin: 10rpx 0;
+}

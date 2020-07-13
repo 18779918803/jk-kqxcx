@@ -1,0 +1,86 @@
+<view class="weui-form">
+		<view class="weui-form__text-area">
+      <image class="image" src="/images/travel_fill.png"/>
+			<h2 class="weui-form__title">出差申请</h2>
+		</view>
+		<view class="weui-form__control-area">
+			<view class="weui-cells__group weui-cells__group_form">
+				<view class="weui-cells weui-cells_form">
+          <!-- 日期选择框 -->
+					<view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">开始日期</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="date" value="{{date}}" start="2020-01-01" end="2100-01-01" bindchange="bindstartDateChange">
+                <view class="weui-select">{{startDate}}</view>
+              </picker>
+						</view>
+					</view>
+          <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">结束日期</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="date" value="{{date}}" start="2020-01-01" end="2100-01-01" bindchange="bindendDateChange">
+                <view class="weui-select">{{endDate}}</view>
+              </picker>
+						</view>
+					</view>
+          <view class="weui-cell weui-cell_active weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">出差类型</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="selector" range="{{travelTypes}}" range-key="name" value="" bindchange="bindTypeChange">
+                <view class="weui-select">{{type}}</view>
+              </picker>
+						</view>
+					</view>
+          <view class="weui-cell weui-cell_active">
+						<view class="weui-cell__hd">							
+              <label class="weui-label">出差天数</label>
+            </view>
+						<view class="weui-cell__bd">
+							<input class="weui-input" value="{{day}}" bindinput="bindDayChange" placeholder="填写您的出差天数" placeholder-class="weui-input__placeholder" />
+						</view>
+					</view>
+          <view class="weui-cell weui-cell_active">
+                  <view class="weui-cell__hd">							
+                    <label class="weui-label">出差申请表</label>
+                  </view>
+                    <!-- <view class="weui-cell__bd">
+                      <input class="weui-input" value="{{day}}" bindinput="bindDayChange" placeholder="填写您的出差天数" placeholder-class="weui-input__placeholder" />
+                    </view> -->
+					</view>
+            <view class="weui-cell weui-cell_active">
+                    <view class="weui-cell__bd">
+                      <image style="width: 60rpx; height: 60rpx;" src="../../../../images/check_fill.png"></image>
+                    </view>
+					</view>
+
+          <!-- 事由描述 -->
+          <view class="weui-cells weui-cells_form">
+            <view class="weui-cell ">
+              <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请填写您的出差原因" rows="3" bindinput="bindReasonChange"></textarea>
+                <view class="weui-textarea-counter"><text>{{reasonLength}}</text>/140</view>
+              </view>
+            </view>
+          </view>
+
+				</view>
+			</view>
+		</view>
+
+    <!-- 提交申请按钮 -->
+		<view class="weui-tab" bindtap="submitApp">
+        <view class="weui-tabbar">
+            <view class="button-sp-area" style="padding-top:15rpx;padding-bottom:15rpx;">
+			        <a class="weui-btn weui-btn_primary">提交申请</a>
+            </view>
+        </view>
+    </view>
+
+
+</view>

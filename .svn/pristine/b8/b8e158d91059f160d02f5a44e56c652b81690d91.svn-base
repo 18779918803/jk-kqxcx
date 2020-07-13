@@ -1,0 +1,28 @@
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="weui-grids">
+		<a class="weui-grid" bindtap="toWorkRecordList" data-url="{{item.url}}" wx:for="{{resList}}" wx:for-item="item" wx:key="index">
+			<view class="weui-grid__icon">
+				<image src="{{item.src}}" alt></image>
+			</view>
+			<view class="weui-grid__label">{{item.name}}</view>
+		</a>
+
+	<!--
+  <a class="weui-grid" bindtap="toLoan">
+			<view class="weui-grid__icon">
+				<image src="/images/dcdb.png" alt></image>
+			</view>
+			<view class="weui-grid__label">内部借款审核</view>
+		</a>
+
+		<a class="weui-grid" bindtap="toDoneLoan">
+			<view class="weui-grid__icon">
+				<image src="/images/dcdb.png" alt></image>
+			</view>
+			<view class="weui-grid__label">内部借款查看</view>
+		</a>-->
+		
+
+	</view>
+
+</view>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "calendar": "/component/calendar/index"
+  },
+  "navigationBarTitleText": "考勤",
+  "navigationBarBackgroundColor": "#5cb85c",
+  "navigationBarTextStyle": "white"
+}

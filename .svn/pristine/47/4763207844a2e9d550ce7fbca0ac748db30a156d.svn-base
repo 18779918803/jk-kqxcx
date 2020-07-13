@@ -1,0 +1,9 @@
+/* pages/sw/instructionList/search/swSearch.wxss */
+.reset_btn {
+  background-color: red;
+  color: white;
+}
+.search_btn {
+  background-color: #07C160;
+  color: white;
+}

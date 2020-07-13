@@ -1,0 +1,50 @@
+<!--index.wxml-->
+<view class="page" data-weui-theme="{{theme}}" style="background-color:#fff;">
+	<calendar
+    id="calendar"
+		calendarConfig="{{calendarConfig}}"
+		bind:onTapDay="onTapDay"
+		bind:afterTapDay="afterTapDay"
+		bind:onSwipe="onSwipe"
+		bind:whenChangeWeek="whenChangeWeek"
+		bind:whenChangeMonth="whenChangeMonth"
+		bind:afterCalendarRender="afterCalendarRender"
+	></calendar>
+
+	<!-- <view wx:if="{{isUp}}" class="up-down" bindtap="calendarUp">
+		<image  src="/images/calendar_up.png" ></image>
+	</view>
+	<view wx:else class="up-down" bindtap="calendarDown">
+			<image  src="/images/calendar_down.png"></image>
+	</view> -->
+
+
+	<view bindtap="calendarSwap">
+		<view class="weui-cells__title">
+      <text class="float-left">{{currentDate}}</text>
+      <view class="float-right" wx:if="{{isUp}}">展开</view>
+      <view class="float-right" wx:if="{{!isUp}}">折叠</view>
+      <view class="clear"></view>
+    </view>
+		<scroll-view scroll-y="true" class="weui-cells weui-cells_after-title" style="height:{{scrollViewHeight}}px">
+			<view class="weui-cell weui-cell_example" wx:for="{{clock}}" wx:key="*this">
+				<view class="weui-cell__hd">
+						<image src="/images/punch_flag.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+				</view>
+				<view class="weui-cell__bd">
+          <h4 class="weui-media-box__title">{{item.way}}</h4>
+          <p class="weui-media-box__desc">{{item.type}}</p>
+        </view>
+				<view class="weui-cell__ft">
+          <h4 class="weui-media-box__title">{{item.time}}</h4>
+          <p class="weui-media-box__desc">{{item.state}}</p>
+        </view>
+			</view>
+      <view wx:if="{{clock.length == 0}}" style="text-align:center;padding:30rpx;color:#ccc;">{{!hasUserInfo ? '请先登录' : '没有记录'}}</view>
+		</scroll-view>
+	</view>
+	
+
+	<view style="margin-bottom:50rpx;"></view>
+
+</view>

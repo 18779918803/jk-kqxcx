@@ -1,0 +1,17 @@
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="weui-msg">
+		<view class="weui-msg__icon-area"><image style="width:150rpx;height:150rpx;" src="/images/personal.png"/></view>
+		<view class="weui-msg__text-area">
+			<h2 class="weui-msg__title">喜子软件</h2>
+			<view class="weui-msg__desc">赣州喜子软件科技有限公司是赣州建控投资控股集团有限公司旗下的全资子公司<a></a></view>
+		</view>
+		<view class="weui-msg__extra-area">
+			<view class="weui-footer">
+				<view class="weui-footer__links">
+					<a class="weui-footer__link">赣州喜子软件 技术支持</a>
+				</view>
+				<view class="weui-footer__text">Copyright<image class="copyright" src="/images/copyright.png"/>2020 www.xizinet.com</view>
+			</view>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,11 @@
+/* pages/sw/seeList/info/info.wxss */
+.reject {
+  background-color: rgb(252, 225, 73);
+  color: white;
+  width: 375rpx;
+}
+.pass {
+  background-color: #07C160;
+  color: white;
+  width: 375rpx;
+}

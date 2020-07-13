@@ -1,0 +1,147 @@
+<view class="page" data-weui-theme="{{theme}}">
+	
+	<view class="weui-tab">
+			<view class="search">
+					<view class="button-sp-area cell">
+							<view class="weui-flex">
+									<view class="weui-flex__item" >
+											<picker mode="date" value="" fields="day" bindchange="bindDateChange">
+													<view class="search-date">
+														<image  src="/images/search_date.png"></image>
+														<text>{{search.date}}</text>
+													</view>	
+											</picker>
+									</view>
+									<view class="middle"></view>
+									<view class="weui-flex__item">
+												<view class="search-type" bindtap="toSelectSearchType">
+													<image  src="/images/search_type.png"></image>
+													<text>筛选</text>
+												</view>
+									</view>
+							</view>
+					</view>
+			</view>
+	</view>
+
+	<view class="page__bd chekc-record-list">
+    <!-- 第一个申请 -->
+		<view class="weui-form-preview" wx:for="{{records}}" wx:key="index" wx:for-item="item">
+			<!-- 加班申请 -->
+      <view wx:if="{{item.pid == 1}}">
+        <view class="weui-form-preview__hd">
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">
+              <view class="application-name" >加班申请</view>
+              <view class="application-date">{{item.taskName}}</view>
+            </label>
+            <em class="weui-form-preview__value">
+              <view>{{item.applyUser}}</view>
+              <view class="application-state">{{item.insertTime}}</view>
+            </em>
+          </view>
+        </view>
+        <view class="weui-form-preview__bd">
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">部门名称</label>
+            <text class="weui-form-preview__value">{{item.organ}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">加班日期</label>
+            <text class="weui-form-preview__value">{{item.date}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">加班事由</label>
+            <text class="weui-form-preview__value">{{item.reason}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 请假申请 -->
+      <view wx:if="{{item.pid == 2}}">
+        <view class="weui-form-preview__hd">
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">
+              <view class="application-name">请假申请</view>
+              <view class="application-date">{{item.taskName}}</view>
+            </label>
+            <em class="weui-form-preview__value">
+              <view>{{item.applyUser}}</view>
+              <view class="application-state">{{item.insertTime}}</view>
+            </em>
+          </view>
+        </view>
+        <view class="weui-form-preview__bd">
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">部门名称</label>
+            <text class="weui-form-preview__value">{{item.organ}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label">请假类型</label>
+              <text class="weui-form-preview__value">{{item.typeName}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label">开始时间</label>
+            <text class="weui-form-preview__value">{{item.startDate}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label" >结束时间</label>
+              <text class="weui-form-preview__value">{{item.endDate}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label">请假天数</label>
+              <text class="weui-form-preview__value">{{item.day}}天</text>
+          </view>
+          <view class="weui-form-preview__item" wx:if="{{item.day == 0.5}}">
+              <label class="weui-form-preview__label">请假时间</label>
+              <text class="weui-form-preview__value">{{item.timeName}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label">请假原因</label>
+            <text class="weui-form-preview__value">{{item.reason}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 核销申请 -->
+      <view wx:if="{{item.pid == 3}}">
+        <view class="weui-form-preview__hd">
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label" >
+              <view class="application-name">核销申请</view>
+              <view class="application-date">{{item.taskName}}</view>
+            </label>
+            <em class="weui-form-preview__value">
+              <view>{{item.applyUser}}</view>
+              <view class="application-state">{{item.insertTime}}</view>
+            </em>
+          </view>
+        </view>
+        <view class="weui-form-preview__bd">
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label">部门名称</label>
+            <text class="weui-form-preview__value">{{item.organ}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label">核销时间</label>
+            <text class="weui-form-preview__value">{{item.date}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label">核销类型</label>
+              <text class="weui-form-preview__value">{{item.typeName}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label">核销原因</label>
+            <text class="weui-form-preview__value">{{item.reason}}</text>
+          </view>
+        </view>
+      </view>
+			<view style="margin-bottom:10rpx;"></view>
+		</view>
+    <view wx:if="{{records.length==0}}" class="weui-loadmore" style="height:300rpx;margin-top:0;padding-top:60rpx;">
+      <text class="weui-loadmore__tips loadmore" style="color:#ccc;">暂无数据</text>
+    </view>
+	</view>
+
+
+
+
+</view>

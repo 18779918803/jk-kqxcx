@@ -1,0 +1,78 @@
+/* 日历主要颜色相关样式 */
+.calendar {
+    background-color: white;
+    padding-bottom: 15rpx;
+}
+.default_color,
+.default_weekend-color,
+.default_handle-color,
+/* 日历头部的颜色和周六周日的颜色 */
+.default_week-color {
+    /*font-weight: bolder;
+    color: #008cff;*/
+}
+.date-wrap {
+    width: 100%;
+    height: 100%;
+}
+/* 今日图标的颜色 */
+.default_today {
+    color: #008cff;
+    background-color: #b4ddff;
+}
+/* 选中日期的颜色 */
+.default_choosed {
+    color: #fff;
+    background-color: #008cff;
+    font-size: initial;
+}
+/* 禁用日期数字的颜色 */
+.default_date-disable {
+    color: #f00303;
+}
+/* 上个月和下个月日期数字和农历的颜色 */
+.default_prev-month-date,
+.default_next-month-date {
+    color: #ccbebe;
+}
+/* 上一个月和下一个月的方格样式 */
+.default_prev-month-date .date,
+.default_next-month-date .date {
+    width: 90rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+}
+/* 周一至周五的日期数字显示颜色 */
+.default_normal-date {
+    /*color: #000000;*/
+    height: 120rpx;
+}
+/* 日历数字的样式 */
+.default_normal-date view {
+    /*font-weight: bolder;*/
+}
+/* 当月日期数字各自的样式 */
+.default_normal-date .date-wrap .date {
+    width: 90rpx;
+    height: 90rpx;
+    text-align: center;
+    vertical-align: auto;
+}
+/* 默认的待办事项圆圈颜色 */
+.default_todo-circle {
+    border-color:rgb(0, 255, 0);
+}
+.default_todo-dot {
+    background-color: #fd1100;
+}
+/* 农历显示的样式 */
+.default_date-desc {
+    text-align: center;
+    color: #928e8e;
+}
+.default_date-desc-lunar {
+    color: #e54d42;
+}
+.default_date-desc-disable {
+    color: #e2e2e2;
+}

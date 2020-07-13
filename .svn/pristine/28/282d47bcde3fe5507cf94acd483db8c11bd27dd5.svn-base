@@ -1,0 +1,70 @@
+/* 搜索框固定在上部的样式 */
+.search{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index: 10;
+  background-color:white;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+/* 搜索框的样式 */
+.placeholder{
+  margin:5px;
+  padding:0 10px;
+  text-align:center;
+  background-color:var(--weui-BG-1);
+  height:2.3em;
+  line-height:2.3em;
+  color:var(--weui-FG-1)
+}
+/* 记录列表的样式，主要是为了让上下两个固定框不遮挡列表内容 */
+.work-record-list {
+  margin-top: 120rpx;
+  margin-bottom: 110rpx;
+}
+.image {
+  position: absolute;
+  top: 35rpx;
+}
+.record-content {
+  margin-left: 55rpx;
+}
+.record-content .date-time {
+  position: absolute;
+  top: 50rpx;
+  right: 25rpx;
+  font-size: small;
+  color: gray;
+  line-height: 10rpx;
+}
+.organ,.date,.reason,.state,.state text{
+  font-size: small;
+  color: gray;
+  line-height: 60rpx;
+}
+.original {
+  color: gray;
+}
+.pass {
+ color: rgb(11, 190, 11);
+}
+.reject {
+  color: red;
+}
+/* 新增申请的按钮样式 */
+.button-sp-area {
+  width:100%;
+  background-color:white;
+}
+.weui-btn {
+  width: 90%;
+  height: 80rpx;
+  border-radius: 80rpx;
+}
+
+.off-record-list{
+  margin-top: 10rpx;
+  margin-bottom: 110rpx;
+}

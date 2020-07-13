@@ -1,0 +1,62 @@
+<view class="page" data-weui-theme="收文审批">
+
+	<view class="weui-tab">
+			<view class="search">
+					<view class="button-sp-area cell">
+						<view class="weui-flex">
+								<view style="width:33%">
+									<view class="search-type">
+										<text>共：{{total}} 条</text>
+									</view>
+								</view>
+
+								<view class="middle"></view>
+								
+								<view style="width:67%">
+											<view class="search-type" bindtap="toSelectSearchType">
+												<image  src="/images/search_type.png"></image>
+												<text>搜索</text>
+											</view>
+								</view>
+							</view>
+					</view>
+			</view>
+	</view>
+	<view class="page__bd chekc-record-list">
+
+    <!-- 第一个审批 -->
+		<view class="weui-form-preview" wx:for="{{instructionList}}" wx:key="index" wx:for-item="item" bindtap="instructionInfo" data-id='{{item.id}}'>
+			<view class="weui-panel__hd">
+        {{item.title}}
+      </view>	
+			<view class="weui-form-preview__bd">
+				<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label" >来文字号：</label>
+					<text class="weui-form-preview__value">{{item.receivedSn}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+						<label class="weui-form-preview__label" >来文单位：</label>
+					<text class="weui-form-preview__value">{{item.receivedOrgName}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label" >收文日期：</label>
+					<text class="weui-form-preview__value">{{item.receivedDate}}</text>
+				</view>
+					<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label" >重要程度：</label>
+					<text class="weui-form-preview__value">{{item.importanceName}}</text>
+				</view>
+			</view>
+			<view style="margin-bottom:10rpx;"></view>
+			<view class='data-loading' hidden='{{hidden}}'>  
+				数据加载中...  
+			</view> 
+			<view class='data-loading' hidden='{{hidden_last}}'>  
+				没有更多了...  
+			</view> 
+		</view> 
+	</view>
+	<view wx:if="{{instructionList.length==0}}" class="weui-loadmore" style="height:300rpx;margin-top:0;padding-top:60rpx;">
+    <text class="weui-loadmore__tips loadmore" style="color:#ccc;">暂无数据</text>
+  </view>
+</view>

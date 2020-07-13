@@ -1,0 +1,51 @@
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="page__bd">
+
+		<view class="weui-panel weui-panel_access">
+			<view class="weui-panel__hd">
+        {{info.title}}
+      </view>
+			<view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text" bindtap="preview">
+            <view class="weui-form-preview__item">
+                <label class="weui-form-preview__label" >来文单位：</label>
+              <text class="weui-form-preview__value">{{info.receivedOrgName}}</text>
+            </view>
+            <view class="weui-form-preview__item">
+                <label class="weui-form-preview__label" >收文日期：</label>
+              <text class="weui-form-preview__value">{{info.receivedDate}}</text>
+            </view>
+            <view class="weui-form-preview__item">
+                <label class="weui-form-preview__label" >秘密等级：</label>
+              <text class="weui-form-preview__value">{{info.securityClassificationName}}</text>
+            </view>
+            <view class="weui-form-preview__item">
+                <label class="weui-form-preview__label" >重要程度：</label>
+              <text class="weui-form-preview__value">{{info.importanceName}}</text>
+            </view>
+             <view class="weui-form-preview__item">
+                <label class="weui-form-preview__label" >拟办意见：</label>
+              <text class="weui-form-preview__value">{{info.propose}}</text>
+            </view>
+            <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label" >领导批示：</label>
+            </view>
+              <view class="weui-form-preview" wx:for="{{info.instructions}}" wx:key="index" wx:for-item="item">
+                <!-- <view class="weui-form-preview__bd"> -->
+                  <view class="weui-form-preview__item">
+                      <!-- <label class="weui-form-preview__label" >标题：</label> -->
+                    <view class="weui-form-preview_value">{{item.name}}：
+                      <text class="pass" wx:if="{{item.status == 2}}">同意</text>
+                      <text class="reject" wx:if="{{item.status == 3}}">驳回</text>
+                    </view>
+                    <text class="weui-form-preview_value">{{item.content}}</text>
+                  </view>
+                </view>
+            
+          </view>   
+			</view>
+      
+		</view>
+
+	</view>
+</view>

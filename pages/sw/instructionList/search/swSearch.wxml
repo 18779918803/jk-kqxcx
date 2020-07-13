@@ -1,0 +1,99 @@
+<!--pages/sw/instructionList/search/swSearch.wxml-->
+<view class="weui-form">
+		<view class="weui-form__control-area">
+			<view class="weui-cells__group weui-cells__group_form">
+				<view class="weui-cells weui-cells_form">
+          <view class="weui-cell weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">来文单位</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="selector" range="{{receivedOrgs}}" range-key="name" value="" bindchange="bindReceivedOrgChange">
+                <view class="weui-select">{{receivedOrgName}}</view>
+              </picker>
+						</view>
+					</view>
+
+          <view class="weui-cell weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">密级</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="selector" range="{{securityClassifications}}" range-key="name" value="" bindchange="bindSecurityClassificationChange">
+                <view class="weui-select">{{securityClassificationName}}</view>
+              </picker>
+						</view>
+					</view>
+
+          <view class="weui-cell weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">重要程度</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="selector" range="{{importances}}" range-key="name" value="" bindchange="bindImportanceChange">
+                <view class="weui-select">{{importanceName}}</view>
+              </picker>
+						</view>
+					</view>
+
+          <view class="weui-cell weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">归档</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="selector" range="{{completes}}" range-key="name" value="" bindchange="bindCompleteChange">
+                <view class="weui-select">{{completeName}}</view>
+              </picker>
+						</view>
+					</view>
+
+
+					<view class="weui-cell weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">开始日期</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="date" value="{{date}}" start="2020-01-01" end="2100-01-01" bindchange="bindStartDateChange">
+                <view class="weui-select">{{startDate}}</view>
+              </picker>
+						</view>
+					</view>
+          <view class="weui-cell weui-cell_select weui-cell_select-after">
+						<view class="weui-cell__hd">							
+                <label class="weui-label">结束日期</label>
+            </view>
+						<view class="weui-cell__bd">
+              <picker mode="date" value="{{date}}" start="2020-01-01" end="2100-01-01" bindchange="bindEndDateChange">
+                <view class="weui-select">{{endDate}}</view>
+              </picker>
+						</view>
+					</view>
+          
+         
+          
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <input id="sw_title" value="{{title}}" class="weui-input" placeholder="请输入标题" bindinput="bindTitleChange" />
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <input id="sw_receivedSn" value="{{receivedSn}}" class="weui-input" placeholder="请输入来文字号" bindinput="bindReceivedSnChange" />
+            </view>
+          </view>
+				</view>
+			</view>
+		</view>
+
+  <view class="weui-tab" >
+    <view class="weui-tabbar">
+        <view class="button-sp-area" style="width:50%" bindtap="toReset">
+          <a class="weui-btn reset_btn">清空</a>
+        </view>
+        <view class="button-sp-area" style="width:50%" bindtap="toSearch">
+          <a class="weui-btn search_btn">搜索</a>
+        </view>
+    </view>
+  </view>
+</view>
+

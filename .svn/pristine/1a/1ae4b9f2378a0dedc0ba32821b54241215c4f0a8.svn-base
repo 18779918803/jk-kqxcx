@@ -1,0 +1,84 @@
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="page__bd">
+
+		<view class="weui-panel weui-panel_access">
+			<view class="weui-panel__hd">
+        {{info.title}}
+      </view>
+			<view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text" bindtap="preview">
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label" >来文单位：</label>
+            <text class="weui-form-preview__value">{{info.receivedOrgName}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label" >收文日期：</label>
+            <text class="weui-form-preview__value">{{info.receivedDate}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label" >秘密等级：</label>
+            <text class="weui-form-preview__value">{{info.securityClassificationName}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label" >重要程度：</label>
+            <text class="weui-form-preview__value">{{info.importanceName}}</text>
+          </view>
+          <view class="weui-form-preview__item">
+            <label class="weui-form-preview__label" >拟办意见：</label>
+          <text class="weui-form-preview__value">{{info.propose}}</text>
+        </view>
+          <view class="weui-form-preview__item">
+              <label class="weui-form-preview__label" >领导批示：</label>
+          </view>
+          
+          <view class="weui-form-preview" wx:for="{{info.instructions}}" wx:key="index" wx:for-item="item">
+            <!-- <view class="weui-form-preview__bd"> -->
+              <view class="weui-form-preview__item">
+                  <!-- <label class="weui-form-preview__label" >标题：</label> -->
+                <view class="weui-form-preview_value">{{item.name}}：
+                  <text class="pass" wx:if="{{item.status == 2}}">同意</text>
+                  <text class="reject" wx:if="{{item.status == 3}}">驳回</text>
+                </view>
+                <text class="weui-form-preview_value">{{item.content}}</text>
+              </view>
+            <!-- </view> -->
+          </view>
+        </view>
+        <view class="weui-flex" >
+          <view class="cut" wx:for="{{info.shortcut}}" wx:key="index" wx:for-item="sc">
+              <text class="cut_box" data-value="{{sc.name}}" bindtap="bindShortcutChange">#{{sc.name}}</text>
+          </view>
+        </view> 
+        <!-- 批示 -->
+        <view class="weui-cells weui-cells_form">
+          <view class="weui-cell ">
+            <view class="weui-cell__bd">
+              <textarea class="weui-textarea" value="{{content}}" placeholder="请填写您的批示" rows="3" bindinput="bindContentChange"></textarea>
+              <view class="weui-textarea-counter"><text>{{contentLength}}</text>/140</view>
+            </view>
+          </view>
+        </view>
+			</view>
+
+      
+		</view>
+
+	</view>
+
+  <view class="weui-tab" >
+    <view class="weui-tabbar">
+        <view class="button-sp-area" style="width:50%" bindtap="swPass">
+          <a class="weui-btn pass">同意</a>
+        </view>
+        <view class="button-sp-area" style="width:50%" bindtap="swReject">
+          <a class="weui-btn reject">驳回</a>
+        </view>
+        <!-- <view class="btn-left_style" bindtap="swPass">
+          <button class="weui-btn weui-btn_primary">同意</button>
+        </view>
+        <view class="btn-left_style" bindtap="swReject">
+          <button class="weui-btn reject">驳回</button>
+        </view> -->
+    </view>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+.weui-cell_example:before{
+  left: 0;
+}
+.oa-cell:before{
+  border-top: 0;
+}
+.oa-cell{
+  padding-top:0;
+  padding-left: 22rpx;
+  padding-right: 32rpx;
+  color: var(--weui-FG-1);
+}
+.oa-extra-area{
+  width: 100%;
+  margin-top: 64rpx;
+  margin-bottom: 48rpx;
+  text-align: center;
+}
+.weui-footer {
+    color: var(--weui-FG-2);
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
+}
+/* 提交申请的按钮样式 */
+.button-sp-area {
+  width:100%;
+  background-color:white;
+}
+.weui-btn {
+  width: 90%;
+  height: 80rpx;
+  border-radius: 15rpx;
+}

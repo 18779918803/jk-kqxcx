@@ -1,0 +1,6 @@
+/* pages/self/info/info.wxss */
+.info-gap{
+  height: 20rpx;
+  width: 100%;
+  background: #eee;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "收文审批列表",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 0  
+}

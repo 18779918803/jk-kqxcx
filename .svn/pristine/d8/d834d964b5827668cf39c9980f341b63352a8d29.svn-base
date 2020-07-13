@@ -1,0 +1,47 @@
+<!--pages/self/self.wxml-->
+<scroll-view scroll-y="true" style="height:{{scrollViewHeight}}px">
+  <view>
+    <view class="bg"></view>
+    <view class="bg-gap"></view>
+  </view>
+  <view>
+    <view class="userinfo">
+      <block wx:if="{{!hasUserInfo && canIUse}}">
+        <view class="default-avatar">
+          <image src="../../images/icon-wechat.png"></image>
+        </view>
+        <view class="loginButton">
+          <button wx:if="{{!loading}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="weui-btn weui-btn_primary qr-bg">微信登录</button>
+          <button wx:if="{{loading}}" class="weui-btn weui-btn_disabled weui-btn_loading"><i class="weui-loading"></i></button>
+        </view>
+      </block>
+      <block wx:else>
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+
+        <div class="weui-cells" style="width:100%;margin-top:80rpx;">
+            <a class="weui-cell weui-cell_access weui-cell_example" href="javascript:" catchtap="selfInfo">
+                <div class="weui-cell__bd">
+                    <p>部门</p>
+                </div>
+                <div class="weui-cell__ft">{{userInfo.organ}}</div>
+            </a>
+            <a class="weui-cell weui-cell_access weui-cell_example" href="javascript:" catchtap="selfInfo">
+                <div class="weui-cell__bd">
+                    <p>姓名</p>
+                </div>
+                <div class="weui-cell__ft">{{userInfo.name}}</div>
+            </a>
+        </div>
+
+      </block>
+    </view>
+    
+    <view class="copyright">
+      <view class="company">物联网大数据 · 研发项目</view>
+      <view class="company">综合管理部门 · 业务支持</view>
+      <view class="company">赣州喜子软件 · 技术支持</view>
+      <view class="company">赣州建控集团 · 版权所有</view>
+    </view>
+  </view>
+</scroll-view>

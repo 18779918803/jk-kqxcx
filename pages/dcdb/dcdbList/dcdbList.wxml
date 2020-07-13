@@ -1,0 +1,28 @@
+<view class="page" data-weui-theme="{{theme}}">
+
+  <view class="condition">
+    <view class="head">
+      <view class="point condition-type"></view>
+      <view class="search-condition">类型</view>
+    </view>
+    <view class="weui-flex" wx:for="{{types}}" wx:key="index" wx:if="{{index % 2 == 0}}">
+			<view class="weui-flex__item" bindtap="searchType" data-message="{{types[index].id}}">
+        <view class="placeholder {{search.typePId == types[index].id ? 'select-type' : ''}}" 
+          wx:if="{{index < types.length}}">{{types[index].name}}</view>
+      </view>
+			<view class="weui-flex__item" bindtap="searchType" data-message="{{types[index+1].id}}">
+        <view class="placeholder {{search.typePId == types[index+1].id ? 'select-type' : ''}}" 
+          wx:if="{{index+1 < types.length}}">{{types[index+1].name}}</view>
+      </view>
+		</view>
+  </view>
+
+  <view class="weui-tab" bindtap="toNewApplication" bindtap="toSearch">
+      <view class="weui-tabbar">
+          <view class="button-sp-area" style="width:100%">
+            <a class="weui-btn">确定</a>
+          </view>
+      </view>
+  </view>
+  
+</view>

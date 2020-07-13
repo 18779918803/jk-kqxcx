@@ -1,0 +1,40 @@
+<view class="page" data-weui-theme="{{theme}}">
+    
+    <view class="weui-tab">
+        <view class="search">
+            <view class="button-sp-area cell">
+                <view class="weui-flex">
+                    <view class="weui-flex__item">
+                        <picker mode="date" value="{{search.year}}" fields="year" bindchange="bindYearChange">
+                            <view class="placeholder">{{search.year}}年</view>
+                        </picker>
+                    </view>
+                    <view class="weui-flex__item">
+                        <picker mode="selector" value="{{search.month - 1}}" range="{{monthList}}" bindchange="bindMonthChange">
+                            <view class="placeholder">{{search.month}}月</view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+    <view class="weui-cells weui-cells_after-title work-record-list">
+        <view class="weui-cell weui-cell_example" wx:for="{{ondutyRecordList}}" wx:key="index">
+            <view class="image">
+                <image class="" src="/images/onduty_fill.png" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="record-content">
+                <view>何任鹏的值班记录</view>
+                <view class="organ">值班部门：{{item.organ}}</view>
+                <view class="date">值班日期：{{item.date}}</view>
+                <view class="state original" wx:if="{{item.state == 0}}"><text>当前状态：</text>待值班……</view>
+                <view class="state pass" wx:elif="{{item.state > 0}}"><text>当前状态：</text>已值班</view>
+                <view class="state reject" wx:else="{{item.state < 0}}"><text>当前状态：</text>未值班</view>
+            </view>
+        </view>
+    </view>
+            
+
+</view>

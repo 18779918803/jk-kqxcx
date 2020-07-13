@@ -1,0 +1,10 @@
+@import "../../../utils/common.wxss";
+@import '/pages/works/works';
+
+.his-row{
+  padding-top: 10rpx;
+  padding-bottom: 18rpx;
+}
+.weui-form-preview:after{
+  border-bottom: none;
+}

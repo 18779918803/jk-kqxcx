@@ -1,0 +1,63 @@
+<view class="page" data-weui-theme="{{theme}}">
+	<view class="weui-grids">
+		<a class="weui-grid" bindtap="toWorkRecordList" data-message="{{index}}" wx:for="{{works}}" wx:key="index">
+			<view class="weui-grid__icon">
+				<image src="{{item.icon}}" alt></image>
+			</view>
+			<view class="weui-grid__label">{{item.name}}</view>
+		</a>
+		<a class="weui-grid" bindtap="toDcdb">
+			<view class="weui-grid__icon">
+				<image src="/images/dcdb.png" alt></image>
+			</view>
+			<view class="weui-grid__label">收文查看</view>
+		</a>
+	</view>
+
+	<view class="weui-grids" wx:if="{{userInfo.role == '普通职员'}}">
+		<a class="weui-grid" bindtap="toCheck">
+			<view class="weui-grid__icon">
+				<image src="/images/check_fill.png" alt></image>
+			</view>
+			<view class="weui-grid__label">审核</view>
+		</a>
+
+		<a class="weui-grid" bindtap="toFinish">
+			<view class="weui-grid__icon">
+				<image src="/images/check_fill.png" alt></image>
+			</view>
+			<view class="weui-grid__label">已审核</view>
+		</a>
+
+		<a class="weui-grid" bindtap="toDcdb">
+			<view class="weui-grid__icon">
+				<image src="/images/dcdb.png" alt></image>
+			</view>
+			<view class="weui-grid__label">督察督办</view>
+		</a>
+
+		<a class="weui-grid" bindtap="toSwInstruction">
+			<view class="weui-grid__icon">
+				<image src="/images/sw/instruction.png" alt></image>
+			</view>
+			<view class="weui-grid__label">收文审批</view>
+		</a>
+
+  <a class="weui-grid" bindtap="toLoan">
+			<view class="weui-grid__icon">
+				<image src="/images/dcdb.png" alt></image>
+			</view>
+			<view class="weui-grid__label">内部借款审核</view>
+		</a>
+
+		<a class="weui-grid" bindtap="toDoneLoan">
+			<view class="weui-grid__icon">
+				<image src="/images/dcdb.png" alt></image>
+			</view>
+			<view class="weui-grid__label">内部借款查看</view>
+		</a>
+		
+
+	</view>
+
+</view>

@@ -1,0 +1,61 @@
+/* 搜索框固定在上部的样式 */
+.search{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index: 10;
+  background-color:white;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+/* 按时间搜索和筛选框的样式 */
+.search-date,.search-type {
+  text-align: center;
+  height: 60rpx;
+  padding-top: 20rpx;
+}
+.search-date image,.search-type image{
+  height: 40rpx;
+  width: 40rpx;
+  margin-right: 20rpx;
+  vertical-align: text-bottom;
+}
+.middle {
+  border:1rpx solid rgb(233, 222, 222);
+  height: 65rpx;
+  margin-top: 15rpx;
+}
+/* 审核列表的样式，主要是为了让上下两个固定框不遮挡列表内容 */
+.chekc-record-list {
+  margin-top: 105rpx;
+  margin-bottom: 20rpx;
+}
+.application-name {
+  width: 100%;
+}
+.application-date {
+  font-size: x-small;
+  line-height: 15rpx;
+}
+.application-state {
+  font-size: x-small;
+  line-height: 20rpx;
+}
+.application-name image {
+  width: 30rpx;
+  height: 30rpx;
+  /* vertical-align: middle; */
+}
+
+.weui-btn {
+  width: 100%;
+  padding: 25rpx 0rpx;
+}
+.data-loading {  
+  height: 100rpx;  
+  line-height: 100rpx;  
+  background-color: #eee;  
+  text-align: center;  
+  font-size: 14px;  
+}  

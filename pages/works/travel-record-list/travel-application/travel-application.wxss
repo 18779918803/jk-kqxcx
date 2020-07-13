@@ -1,0 +1,16 @@
+.image {
+  width:40rpx;
+  height:40rpx;
+  margin-right: 10rpx;
+}
+
+/* 提交申请的按钮样式 */
+.button-sp-area {
+  width:100%;
+  background-color:white;
+}
+.weui-btn {
+  width: 90%;
+  height: 80rpx;
+  border-radius: 15rpx;
+}
